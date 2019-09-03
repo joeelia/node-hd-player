@@ -246,7 +246,7 @@ local Scheduler = (function()
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
         print(item.asset_id)
         for client, _ in pairs(clients) do
-            node.client_write(client, item.asset_id)
+            print(node.client_write(client, item.asset_id))
         end
         return item
     end
