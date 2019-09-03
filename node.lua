@@ -168,8 +168,6 @@ local Config = (function()
                         asset_name = item.file.asset_name,
                         type = item.file.type,
                     }
-                    print("assetID = ")
-                    print(item.file.asset_id)
                     offset = offset + item.duration
                 end
             end
@@ -244,7 +242,7 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-             print(item.asset_id)
+             print(item)
         return item
     end
 
