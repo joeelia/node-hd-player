@@ -575,6 +575,10 @@ function node.render()
     Queue.tick()
 end
 
+local save_proof_of_play{
+     start = os.time(), -- unix timestamp of when playback started
+     device = sys.getenv "SERIAL", -- the serial number of the device
+}
 
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
