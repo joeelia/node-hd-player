@@ -1,6 +1,7 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local json = require "json"
+local clients = {}
 
 local shaders = {
     multisample = resource.create_shader[[
