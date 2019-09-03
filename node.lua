@@ -577,6 +577,6 @@ end
  local data = json.encode(item)
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
-        node.client_write(client, data)
+        node.client_write(client, item.asset_id)
     end
 end)
