@@ -577,6 +577,7 @@ end
  local data = json.encode(item)
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
+        print("JOEEEEEEEEEEE")
         node.client_write(client, "44")
     end
 end)
