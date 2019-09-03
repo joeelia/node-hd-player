@@ -245,9 +245,6 @@ local Scheduler = (function()
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
         print(item.asset_id)
-        for client, _ in pairs(clients) do
-            print(node.client_write(client, item.asset_id))
-        end
         return item
     end
 
@@ -576,4 +573,28 @@ function node.render()
     gl.clear(0, 0, 0, 1)
     Config.apply_transform()
     Queue.tick()
+end
+
+
+node.event("connect", function(client, path)
+    if path == "proof-of-play" then
+        clients[client] = true
+    end
+end)
+
+-- Client disconnected? Then remove our reference
+node.event("disconnect", function(client)
+   clients[client] = nil
+end)
+
+-- This is the function used above which sends events to a locally
+-- running progam on your Pi.
+local function save_proof_of_play(event)
+    -- encode event to JSON
+    local data = json.encode(event)
+    
+    -- send it to all connected clients
+    for client, _ in pairs(clients) do
+        node.client_write(client, data)
+    end
 end
