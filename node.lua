@@ -168,6 +168,8 @@ local Config = (function()
                         asset_name = item.file.asset_name,
                         type = item.file.type,
                     }
+                    print("assetID = ")
+                    print(item.file.asset_id)
                     offset = offset + item.duration
                 end
             end
