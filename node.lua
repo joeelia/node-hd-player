@@ -574,28 +574,9 @@ function node.render()
     Config.apply_transform()
     Queue.tick()
 end
-
-local function save_proof_of_play(start = os.time())
-
+ local data = json.encode(item)
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
-        clients[client] = true
-    end
-end)
-
--- Client disconnected? Then remove our reference
-node.event("disconnect", function(client)
-   clients[client] = nil
-end)
-
--- This is the function used above which sends events to a locally
--- running progam on your Pi.
-local function save_proof_of_play(event)
-    -- encode event to JSON
-    local data = json.encode(event)
-    
-    -- send it to all connected clients
-    for client, _ in pairs(clients) do
         node.client_write(client, data)
     end
-end
+end)
