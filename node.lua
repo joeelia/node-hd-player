@@ -243,7 +243,7 @@ local Scheduler = (function()
 
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
-        print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
+        print(string.format("next scheduled item is %s [%f]", item.asset_name, item.asset_id, item.duration))
         return item
     end
 
