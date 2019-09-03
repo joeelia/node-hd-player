@@ -166,6 +166,7 @@ local Config = (function()
                         total_duration = total_duration,
                         duration = item.duration,
                         asset_name = item.file.asset_name,
+                        asset_id = item.file.asset_id,
                         type = item.file.type,
                     }
                     offset = offset + item.duration
