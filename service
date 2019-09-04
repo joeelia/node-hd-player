@@ -6,6 +6,6 @@ ib = ibquery.InfoBeamerQuery()
 s = ib.node('root/proof-of-play').io(raw=True)
 
 my_dict = []
-my_dict.update({'device_id' : config.metadata['device_id']})
+my_dict.append({'device_id' : config.metadata['device_id']})
 print(my_dict)
 print s.readline()
