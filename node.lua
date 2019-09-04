@@ -244,7 +244,12 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-        node.event("data", function(item.asset_id, 'foobar'))
+        node.event("input", function(line, client)
+    print("Input was: " .. line)
+
+    -- send something back to the client that sent us data
+    node.client_write(client, "data was received")
+end)
         print(item.asset_id)
         return item
     end
