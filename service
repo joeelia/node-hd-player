@@ -5,11 +5,4 @@ import ibquery
 from pprint import pprint
 ib = ibquery.InfoBeamerQuery()
 s = ib.node('root/proof-of-play').io(raw=True)
-
-my_dict = []
-my_dict.append({'device_id' : config.metadata['device_id']})
-print(my_dict)
-my_dict.append(s.readline())
-print(my_dict)
-pprint(vars(s))
-print dir(s)
+print s.readline()
