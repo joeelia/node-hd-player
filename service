@@ -1,7 +1,0 @@
-#!/usr/bin/python
-import ibquery, requests
-ib = ibquery.InfoBeamerQuery("127.0.0.1")
-stream = ib.node('root/proof-of-play').io(raw=True)
-
-for event in stream:
-    print(event.strip())
