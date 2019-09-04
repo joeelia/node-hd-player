@@ -1,4 +1,4 @@
-import ibquery, requests
+import requests
 ib = ibquery.InfoBeamerQuery("127.0.0.1")
 stream = ib.node('root/proof-of-play').io(raw=True)
 
