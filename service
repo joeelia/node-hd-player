@@ -5,7 +5,6 @@ ib = ibquery.InfoBeamerQuery("127.0.0.1")
 stream = ib.node('root/proof-of-play').io(raw=True)
 
 for event in stream:
-    data = {"event": event.strip()}
-    print(data)
+    print(str(event))
     
 print("NOOOOOOOOOOOOO")
