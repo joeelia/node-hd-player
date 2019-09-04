@@ -5,6 +5,7 @@ local clients = {}
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
         clients[client] = true
+        print(clients[client])
     end
 end)
 
