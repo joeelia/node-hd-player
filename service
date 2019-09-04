@@ -1,8 +1,7 @@
 #!/usr/bin/python
 import ibquery, requests
 ib = ibquery.InfoBeamerQuery("127.0.0.1")
-stream = ib.node('nested/child/feebar').io(raw=False)
+stream = ib.node('root/proof-of-play').io(raw=True)
 
-while True:
-    print(stream[event])
-    # to keep on running
+for event in stream:
+    print(event.strip())
