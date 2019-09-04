@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 from hosted import device, node, config, json, os, sys, requests, config, requests
 import ibquery
 ib = ibquery.InfoBeamerQuery()
