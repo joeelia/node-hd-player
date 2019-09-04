@@ -2,6 +2,11 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local json = require "json"
 local clients = {}
+node.event("connect", function(client, path)
+    if path == "proof-of-play" then
+        clients[client] = true
+    end
+end)
 
 local shaders = {
     multisample = resource.create_shader[[
@@ -244,12 +249,7 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-        node.event("input", function(line, client)
-    print("Input was: " .. line)
-
-    -- send something back to the client that sent us data
-    node.client_write(client, "data was received")
-end)
+         node.client_write(client, item.asset_id)
         print(item.asset_id)
         return item
     end
@@ -580,10 +580,3 @@ function node.render()
     Config.apply_transform()
     Queue.tick()
 end
- local data = json.encode(item)
-node.event("connect", function(client, path)
-    if path == "proof-of-play" then
-        print("JOEEEEEEEEEEE")
-        node.client_write(client, "44")
-    end
-end)
