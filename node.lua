@@ -5,7 +5,6 @@ local clients = {}
 node.event("connect", function(client, path)
     if path == "proof-of-play" then
         clients[client] = true
-        print(clients[client])
     end
 end)
 
@@ -250,6 +249,9 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
+        for client, _ in pairs(clients) do
+            node.client_write(client, item.asset_id)
+        end
         print(item.asset_id)
         return item
     end
