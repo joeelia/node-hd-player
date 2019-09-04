@@ -249,9 +249,7 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-        for client, _ in pairs(clients) do
-            node.client_write(client, item.asset_id)
-        end
+
         print(item.asset_id)
         return item
     end
@@ -316,6 +314,9 @@ local ImageJob = function(item, ctx, fn)
     end
 
     print "waiting for start"
+    for client, _ in pairs(clients) do
+        node.client_write(client, item.asset_id)
+    end
     local starts = fn.wait_t(ctx.starts)
     local duration = ctx.ends - starts
 
