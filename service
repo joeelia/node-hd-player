@@ -3,4 +3,9 @@ from hosted import device, node, config, json, os, sys, requests, config, reques
 import ibquery
 ib = ibquery.InfoBeamerQuery("127.0.0.1")
 stream = ib.node('root/proof-of-play').io(raw=True)
+
+for event in stream:
+    data = {"event": event.strip()})
+    print(data)
+    
 print("NOOOOOOOOOOOOO")
