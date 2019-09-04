@@ -251,7 +251,9 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-
+        for client, _ in pairs(clients) do
+            node.client_write(client, json.encode(item))
+        end
         print(item.asset_id)
         return item
     end
@@ -406,9 +408,6 @@ local VideoJob = function(item, ctx, fn)
     end
 
     print "waiting for start"
-    for client, _ in pairs(clients) do
-        node.client_write(client, json.encode(item))
-    end
     fn.wait_t(ctx.starts)
 
     print(">>> VIDEO", res, ctx.starts, ctx.ends)
