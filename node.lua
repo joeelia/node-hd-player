@@ -406,6 +406,9 @@ local VideoJob = function(item, ctx, fn)
     end
 
     print "waiting for start"
+    for client, _ in pairs(clients) do
+        node.client_write(client, json.encode(item))
+    end
     fn.wait_t(ctx.starts)
 
     print(">>> VIDEO", res, ctx.starts, ctx.ends)
