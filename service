@@ -4,5 +4,9 @@ from hosted import device, node, config, json, os, sys, requests, config, reques
 import ibquery
 ib = ibquery.InfoBeamerQuery()
 s = ib.node('root/proof-of-play').io(raw=True)
+
+my_dict = []
+my_dict.update({'device_id' : config.metadata['device_id']})
+print(my_dict)
 print s.readline()
-print config.metadata[‘device_id’]
+ok ="device_id": config.metadata['device_id'],
