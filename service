@@ -9,4 +9,3 @@ my_dict = []
 my_dict.update({'device_id' : config.metadata['device_id']})
 print(my_dict)
 print s.readline()
-ok ="device_id": config.metadata['device_id'],
