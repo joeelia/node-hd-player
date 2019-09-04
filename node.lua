@@ -173,7 +173,6 @@ local Config = (function()
                         duration = item.duration,
                         asset_name = item.file.asset_name,
                         asset_id = item.file.asset_id,
-                        device_id = item.file.device_id,
                         type = item.file.type,
                     }
                     offset = offset + item.duration
