@@ -174,6 +174,7 @@ local Config = (function()
                         asset_name = item.file.asset_name,
                         asset_id = item.file.asset_id,
                         device_id = config.__metadata.device_id,
+                        time = os.time(),
                         type = item.file.type,
                     }
                     offset = offset + item.duration
