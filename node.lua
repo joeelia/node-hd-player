@@ -250,7 +250,6 @@ local Scheduler = (function()
         local item
         item, playlist_offset = cycled(playlist, playlist_offset)
         print(string.format("next scheduled item is %s [%f]", item.asset_name, item.duration))
-         node.client_write(client, item.asset_id)
         print(item.asset_id)
         return item
     end
