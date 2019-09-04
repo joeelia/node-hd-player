@@ -315,7 +315,7 @@ local ImageJob = function(item, ctx, fn)
 
     print "waiting for start"
     for client, _ in pairs(clients) do
-        node.client_write(client, item.asset_id)
+        node.client_write(client, json.encode(item))
     end
     local starts = fn.wait_t(ctx.starts)
     local duration = ctx.ends - starts
