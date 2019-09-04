@@ -4,4 +4,4 @@ import ibquery
 ib = ibquery.InfoBeamerQuery()
 s = ib.node('root/proof-of-play').io(raw=True)
 print s.readline()
-print str(config.metadata[‘device_id’])
+print (config.metadata[‘device_id’])
